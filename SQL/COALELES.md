@@ -1,0 +1,1 @@
+COALELES returns first non-null on the list
