@@ -107,11 +107,6 @@
         "when": "inKeybindings && inKeybindingsSearch"
     },
     {
-        "key": "alt+k",
-        "command": "editor.action.moveLinesUpAction",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
         "key": "shift+alt+up",
         "command": "-extension.vim_cmd+alt+up",
         "when": "editorTextFocus && vim.active && !inDebugRepl"
@@ -125,11 +120,6 @@
         "key": "shift+alt+j",
         "command": "editor.action.insertCursorBelow",
         "when": "editorTextFocus"
-    },
-    {
-        "key": "alt+j",
-        "command": "editor.action.moveLinesDownAction",
-        "when": "editorTextFocus && !editorReadonly"
     },
     {
         "key": "shift+alt+k",
