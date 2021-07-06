@@ -179,5 +179,6 @@
     "editor.insertSpaces": false,
     "editor.lineNumbers": "relative",
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-    "vscode-neovim.neovimExecutablePaths.linux": "/home/huytq/nvim.appimage"
+    "vscode-neovim.neovimExecutablePaths.linux": "/home/huytq/nvim.appimage",
+    "workbench.list.automaticKeyboardNavigation": false
 }

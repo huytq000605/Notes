@@ -31,7 +31,10 @@ call plug#end()
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
-map  s <Plug>(easymotion-bd-w)
+"map  s <Plug>(easymotion-bd-w)
+nmap s <Plug>(easymotion-f)
+nmap S <Plug>(easymotion-F)
+
 nnoremap d "_d
 vnoremap d "_d
 nnoremap c "_c
@@ -83,3 +86,5 @@ endfunction
 
 vnoremap J :<C-u>call MoveVisualDown()<CR>
 vnoremap K :<C-u>call MoveVisualUp()<CR>
+nnoremap Q <Nop>
+

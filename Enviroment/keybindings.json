@@ -166,11 +166,6 @@
         "when": "viewContainer.workbench.view.explorer.enabled"
     },
     {
-        "key": "= =",
-        "command": "editor.action.formatSelection",
-        "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly"
-    },
-    {
         "key": "ctrl+k ctrl+f",
         "command": "-editor.action.formatSelection",
         "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly"
@@ -178,5 +173,15 @@
     {
         "command": "-vscode-neovim.send",
         "key": "ctrl+a"
+    },
+    {
+        "key": "alt+j",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "alt+k",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus && !editorReadonly"
     }
 ]
