@@ -32,8 +32,7 @@ call plug#end()
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 "map  s <Plug>(easymotion-bd-w)
-nmap s <Plug>(easymotion-f)
-nmap S <Plug>(easymotion-F)
+nmap s <Plug>(easymotion-bd-f)
 
 nnoremap d "_d
 vnoremap d "_d
