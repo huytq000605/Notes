@@ -23,15 +23,18 @@ Gnome-tweaks
 
 # Shell
 
-Install ZSH
+- Install ZSH
 
-Install Oh my ZSH
+- Install Oh my ZSH
 
-Install Powerlevel 10k Theme
+- Install Powerlevel 10k Theme
 
-Install Fzf
+- Install Fzf
 
-Install Kitty (Terminal)
+- Install Kitty (Terminal):
+
+Add config file (kitty.conf) to ~/.config/kitty/
+
 
 # Editor
 Download nvim.appimage
