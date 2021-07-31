@@ -31,6 +31,8 @@ Install Powerlevel 10k Theme
 
 Install Fzf
 
+Install Kitty (Terminal)
+
 # Editor
 Download nvim.appimage
 
