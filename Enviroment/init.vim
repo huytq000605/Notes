@@ -7,7 +7,6 @@ set relativenumber
 syntax enable
 
 call plug#begin()
-
 if exists('g:vscode')
 	" VSCode extension
 else
@@ -17,8 +16,11 @@ else
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 	Plug 'nvim-lua/completion-nvim'
+	
+
+	" Golang Language server
+	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 endif
 
 
@@ -30,25 +32,28 @@ call plug#end()
 
 colorscheme moonlight
 
-lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
-autocmd BufEnter * lua require'completion'.on_attach()
-
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-
-" Avoid showing message extra message when using completion
-set shortmess+=c
-
 if exists('g:vscode')
 
 else
-	map <C-t> :Files<CR>
-	map <C-q> :NERDTreeToggle<CR>
-	let NERDTreeShowLineNumbers=1
+
+	" Neo-vim LSP config
+		lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
+		autocmd BufEnter * lua require'completion'.on_attach()
+
+		" Use <Tab> and <S-Tab> to navigate through popup menu
+		inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+		inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+		" Set completeopt to have a better completion experience
+		set completeopt=menuone,noinsert,noselect
+
+		" Avoid showing message extra message when using completion
+		set shortmess+=c
+
+	" Nerd Tree
+		map <C-t> :Files<CR>
+		map <C-q> :NERDTreeToggle<CR>
+		let NERDTreeShowLineNumbers=1
 endif
 
 
