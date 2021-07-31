@@ -54,3 +54,5 @@ mkdir -p ~/.config/nvim
 Copy this **init.vim** to above folder
 
 Run :PlugInstall the first time
+
+Install Language Server

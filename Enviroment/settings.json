@@ -5,7 +5,6 @@
     "code-runner.runInTerminal": true,
     "editor.fontLigatures": false,
     "editor.fontSize": 16,
-    "workbench.colorTheme": "Moonlight II Italic",
     "workbench.editor.enablePreview": true,
     "window.openFilesInNewWindow": "off",
     "editor.cursorStyle": "line",
@@ -180,5 +179,7 @@
     "editor.lineNumbers": "relative",
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
     "vscode-neovim.neovimExecutablePaths.linux": "/home/huytq/nvim.appimage",
-    "workbench.list.automaticKeyboardNavigation": false
+    "workbench.list.automaticKeyboardNavigation": false,
+    "workbench.colorTheme": "Moonlight II",
+    "editor.scrollBeyondLastLine":false,
 }

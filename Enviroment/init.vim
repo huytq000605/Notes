@@ -1,33 +1,56 @@
 function! Cond(cond, ...)
-  let opts = get(a:000, 0, {})
-  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+	let opts = get(a:000, 0, {})
+	return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
-function! s:openVSCodeCommandsInVisualMode()
-    normal! gv
-    let visualmode = visualmode()
-    if visualmode == "V"
-        let startLine = line("v")
-        let endLine = line(".")
-        call VSCodeNotifyRange("workbench.action.showCommands", startLine, endLine, 1)
-    else
-        let startPos = getpos("v")
-        let endPos = getpos(".")
-        call VSCodeNotifyRangePos("workbench.action.showCommands", startPos[1], endPos[1], startPos[2], endPos[2], 1)
-    endif
-endfunction
+set relativenumber
+syntax enable
+
+call plug#begin()
 
 if exists('g:vscode')
-    " VSCode extension
+	" VSCode extension
 else
-    " ordinary neovim
+	" ordinary neovim
+	Plug 'shaunsingh/moonlight.nvim'
+	Plug 'scrooloose/nerdtree'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+	Plug 'nvim-lua/completion-nvim'
 endif
-call plug#begin()
+
+
 " use normal easymotion when in vim mode
 Plug 'easymotion/vim-easymotion', Cond(!exists('g:vscode'))
 " use vscode easymotion when in vscode mode
 Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })
 call plug#end()
+
+colorscheme moonlight
+
+lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
+autocmd BufEnter * lua require'completion'.on_attach()
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+if exists('g:vscode')
+
+else
+	map <C-t> :Files<CR>
+	map <C-q> :NERDTreeToggle<CR>
+	let NERDTreeShowLineNumbers=1
+endif
+
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
@@ -39,51 +62,16 @@ vnoremap d "_d
 nnoremap c "_c
 vnoremap c "_c
 
-function! MoveLineUp()
-    call MoveLineOrVisualUp(".", "")
-endfunction
-
-function! MoveLineDown()
-    call MoveLineOrVisualDown(".", "")
-endfunction
-
-function! MoveVisualUp()
-    call MoveLineOrVisualUp("'<", "'<,'>")
-    normal gv
-endfunction
-
-function! MoveVisualDown()
-    call MoveLineOrVisualDown("'>", "'<,'>")
-    normal gv
-endfunction
-
-function! MoveLineOrVisualUp(line_getter, range)
-    let l_num = line(a:line_getter)
-    if l_num - v:count1 - 1 < 0
-        let move_arg = "0"
-    else
-        let move_arg = a:line_getter." -".(v:count1 + 1)
-    endif
-    call MoveLineOrVisualUpOrDown(a:range."move ".move_arg)
-endfunction
-
-function! MoveLineOrVisualDown(line_getter, range)
-    let l_num = line(a:line_getter)
-    if l_num + v:count1 > line("$")
-        let move_arg = "$"
-    else
-        let move_arg = a:line_getter." +".v:count1
-    endif
-    call MoveLineOrVisualUpOrDown(a:range."move ".move_arg)
-endfunction
-
-function! MoveLineOrVisualUpOrDown(move_arg)
-    let col_num = virtcol(".")
-    execute "silent! ".a:move_arg
-    execute "normal! ".col_num."|"
-endfunction
-
-vnoremap J :<C-u>call MoveVisualDown()<CR>
-vnoremap K :<C-u>call MoveVisualUp()<CR>
 nnoremap Q <Nop>
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap J mzJ`z
 
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
