@@ -8,7 +8,7 @@
     "workbench.editor.enablePreview": true,
     "window.openFilesInNewWindow": "off",
     "editor.cursorStyle": "line",
-    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "MesloLGS NF",
     "workbench.editor.highlightModifiedTabs": true,
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -47,7 +47,7 @@
     "[javascriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "terminal.integrated.fontFamily": "monospace",
+    // "terminal.integrated.fontFamily": "monospace",
     "indentRainbow.colors": [
         "rgba(255,255,64,0.04)",
         "rgba(127,255,127,0.04)",
@@ -152,7 +152,7 @@
     "vim.handleKeys": {
         "<C-a>": false,
         "<C-d>": false,
-        "<C-y>": false,
+        "<C-y>":false,
         "<C-c>": false,
         "<C-x>": false,
         "<C-space>": false
@@ -181,5 +181,14 @@
     "vscode-neovim.neovimExecutablePaths.linux": "/home/huytq/nvim.appimage",
     "workbench.list.automaticKeyboardNavigation": false,
     "workbench.colorTheme": "Moonlight II",
-    "editor.scrollBeyondLastLine":false,
-}
+    "editor.scrollBeyondLastLine": false,
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "bash"
+        },
+        "zsh": {
+            "path": "zsh"
+        }
+    },
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+} 

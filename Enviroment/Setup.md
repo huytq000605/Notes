@@ -27,7 +27,7 @@ Gnome-tweaks
 
 - Install Oh my ZSH
 
-- Install Powerlevel 10k Theme
+- Install Powerlevel 10k Theme (Remember to install font)
 
 - Install Fzf
 
