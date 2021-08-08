@@ -3,8 +3,17 @@ function! Cond(cond, ...)
 	return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
+set encoding=UTF-8
 set relativenumber
-syntax enable
+set number
+syntax on 
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set smartindent
+set noemoji
+set cursorline
 
 call plug#begin()
 if exists('g:vscode')
@@ -17,10 +26,12 @@ else
 	Plug 'junegunn/fzf.vim'
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-lua/completion-nvim'
+	Plug 'luochen1990/rainbow'
+	Plug 'glepnir/lspsaga.nvim'
 	
 
 	" Golang Language server
-	Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+	 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 endif
 
 
@@ -35,6 +46,7 @@ colorscheme moonlight
 if exists('g:vscode')
 
 else
+        "lua require('callbacks')
 
 	" Neo-vim LSP config
 		lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
@@ -54,9 +66,15 @@ else
 		map <C-t> :Files<CR>
 		map <C-q> :NERDTreeToggle<CR>
 		let NERDTreeShowLineNumbers=1
+
+
+    "
+    lua require'lspsaga'.init_lsp_saga {error_sign = '',warn_sign = '',hint_sign = '', infor_sign = '',border_style = "round"} 
 endif
 
-
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:rainbow_active = 1
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 "map  s <Plug>(easymotion-bd-w)
