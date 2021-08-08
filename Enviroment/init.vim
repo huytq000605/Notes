@@ -27,11 +27,6 @@ else
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'nvim-lua/completion-nvim'
 	Plug 'luochen1990/rainbow'
-	Plug 'glepnir/lspsaga.nvim'
-	
-
-	" Golang Language server
-	 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 endif
 
 
@@ -49,8 +44,8 @@ else
         "lua require('callbacks')
 
 	" Neo-vim LSP config
-		lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
-		autocmd BufEnter * lua require'completion'.on_attach()
+		"lua require'lspconfig'.gopls.setup{on_attach=require'completion'.on_attach}
+		"autocmd BufEnter * lua require'completion'.on_attach()
 
 		" Use <Tab> and <S-Tab> to navigate through popup menu
 		inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -63,13 +58,12 @@ else
 		set shortmess+=c
 
 	" Nerd Tree
-		map <C-t> :Files<CR>
+		map <C-t> :GFiles<CR>
 		map <C-q> :NERDTreeToggle<CR>
 		let NERDTreeShowLineNumbers=1
 
 
     "
-    lua require'lspsaga'.init_lsp_saga {error_sign = '',warn_sign = '',hint_sign = '', infor_sign = '',border_style = "round"} 
 endif
 
 let g:go_highlight_functions = 1
