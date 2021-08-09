@@ -74,12 +74,14 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 "map  s <Plug>(easymotion-bd-w)
 nmap s <Plug>(easymotion-bd-f)
 
+"c and d dont use buffer register
 nnoremap d "_d
 vnoremap d "_d
 nnoremap c "_c
 vnoremap c "_c
 
 nnoremap Q <Nop>
+" When press next move to center screen
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap J mzJ`z
@@ -89,6 +91,12 @@ inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 
-
+" move line up down in visual mode
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+" begin and end on line
+nnoremap B ^
+nnoremap W $
+nnoremap L $
+nnoremap H ^
