@@ -12,8 +12,6 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set smartindent
-set noemoji
-set cursorline
 
 call plug#begin()
 if exists('g:vscode')
@@ -21,12 +19,10 @@ if exists('g:vscode')
 else
 	" ordinary neovim
 	Plug 'shaunsingh/moonlight.nvim'
-	Plug 'scrooloose/nerdtree'
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'nvim-lua/completion-nvim'
-	Plug 'luochen1990/rainbow'
+    Plug 'kyazdani42/nvim-web-devicons' " for file icons
+    Plug 'kyazdani42/nvim-tree.lua'
+"	Plug 'neovim/nvim-lspconfig'
+"	Plug 'nvim-lua/completion-nvim'
 endif
 
 
@@ -48,19 +44,22 @@ else
 		"autocmd BufEnter * lua require'completion'.on_attach()
 
 		" Use <Tab> and <S-Tab> to navigate through popup menu
-		inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-		inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"		inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+"		inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"
+"		" Set completeopt to have a better completion experience
+"		set completeopt=menuone,noinsert,noselect
+"
+"		" Avoid showing message extra message when using completion
+"		set shortmess+=c
 
-		" Set completeopt to have a better completion experience
-		set completeopt=menuone,noinsert,noselect
+	" Tree
+    nnoremap <C-q> :NvimTreeToggle<CR>
+    "nnoremap <leader>r :NvimTreeRefresh<CR>
+    "nnoremap <leader>n :NvimTreeFindFile<CR>
+" NvimTreeOpen, NvimTreeClose and NvimTreeFocus are also available if you need them
 
-		" Avoid showing message extra message when using completion
-		set shortmess+=c
-
-	" Nerd Tree
-		map <C-t> :GFiles<CR>
-		map <C-q> :NERDTreeToggle<CR>
-		let NERDTreeShowLineNumbers=1
+set termguicolors " this variable must be enabled for colors to be applied properly
 
 
     "
@@ -81,6 +80,8 @@ nnoremap c "_c
 vnoremap c "_c
 
 nnoremap Q <Nop>
+inoremap <c-a> <Nop>
+
 " When press next move to center screen
 nnoremap n nzz
 nnoremap N Nzz
@@ -97,6 +98,4 @@ vnoremap K :m '<-2<CR>gv=gv
 
 " begin and end on line
 nnoremap B ^
-nnoremap W $
-nnoremap L $
-nnoremap H ^
+nnoremap E $
