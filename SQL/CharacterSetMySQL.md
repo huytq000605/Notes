@@ -1,0 +1,1 @@
+ALTER TABLE test_run CHANGE name name VARCHAR(127) CHARACTER SET utf8mb4 COLLATE utf8mb4_vietnamese_ci NOT NULL;
