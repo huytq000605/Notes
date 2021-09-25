@@ -4,3 +4,11 @@
 2. If the server has open ports that can accept and initiate new connections, it’ll respond with an ACKnowledgment of the SYN packet using a SYN/ACK packet.
 3. The client will receive the SYN/ACK packet from the server and will acknowledge it by sending an ACK packet.
 Then a TCP connection is established for data transmission!
+
+
+# Close connection
+## Can be 4way of 3way
+
+1. Send FIN
+2. Send ACK back && FIN (can be 2 steps)
+3. Send ACK
