@@ -5,6 +5,7 @@ OS allocates resources, adresss space for process (stack memory & heap memory)
 CPU start executing instruction by loading instruction from RAM to register
 
 1.Created 2.Running 3.Waiting 4.Ready 5.Terminated
+
 2 ways to communicate: Shared memory or Message Passing
 
 # Threads
@@ -17,9 +18,8 @@ All threads in a process share the same adress space of a process
 
 Create/Communicate between/ threads is expensive
 
-1 process per processor
-In Multiprocessing, CPUs are added for increasing computing power.
-Multithreading is a program execution technique that allows a single process to have multiple code segments
+1 process per core
+Even a computer with one CPU core can "simultaneously" support dozens or hundreds of threads. But we all [should] know that this is merely a trick by the operating system though the magic of time-slicing. In reality, that single core can only execute one thread at a time; then the OS switches contexts and that core executes code for another thread, and so on. It is a basic Law of Computing that given a single CPU resource, executing A and B sequentially will always be faster than executing A and B "simultaneously" through time-slicing. Once the number of threads exceeds the number of CPU cores, you're going slower by adding more threads, not faster.
 
 Multiprocessing are classified according to the way their memory is organized.
 Multiprocessing improves the reliability of the system
