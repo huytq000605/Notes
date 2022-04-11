@@ -9,9 +9,9 @@ CPU start executing instruction by loading instruction from RAM to register
 2 ways to communicate: Shared memory or Message Passing
 
 # Threads
-Thread is basic unit of execution within a process
-A process can have many threads
-Have own stack, state, register, program counter
+- Thread is basic unit of execution within a process
+- A process can have many threads
+- Have their own stack, state, register, program counter
 
 # Compare
 All threads in a process share the same adress space of a process
