@@ -19,10 +19,6 @@
 - TLS Handshake
 - Get Page (HTML), parse html and get CSS / JS
 
-# DNS (Domain Name System)
-- Hostname <-> IP
-- DNS uses UDP port 53 to serve DNS query (fast, request is small, fit UDP segment, reliability can be added in app layer by retry)
-
 # TLS Handshake
 - Client sends Client Hello to Server, includes Max TLS Version client support, cipher suites, client random
 - Server sends Server Hello to Client, includes SSL certificate (Server's PK),  TLS version, Cipher Suites choosen, server random
